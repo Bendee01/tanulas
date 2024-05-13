@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanulas</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: black; /* Fekete háttér */
+    color: white; /* Fehér szöveg */
+  }
+  #szoveg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none;
+  }
+  #szoveg p {
+    font-size: 3vw; /* Betűméret százalékban a nézet szélességéhez viszonyítva */
+    line-height: 1.5; /* Nagyobb sortávolság */
+  }
+</style>
+</head>
+<body onclick="toggleTeljesKepreNyom()"> <!-- Kattintásra jelenítse meg a szöveget, és rakja teljes képernyőbe -->
+<div id="szoveg" onclick="event.stopPropagation()"> <!-- A szöveg rész -->
+  <p>Hőmérséklet-tºC</p>
+  <p>Hónap-m</p>
+  <p>Nap-d</p>
+  <p>Év-y</p>
+  <p>Hangerő-dB(decibel)</p>
+  <p>Frekvencia-f-kHz,Hz</p>
+  <p>Hullám terjedési sebessége-c-m/s,km/s</p>
+  <p>Amlitúdó-A-m</p>
+  <p>Hullámhossz-λ-m</p>
+  <p>Rezgésidő-T-s</p>
+  <p>Fényév</p>
+  <p>ellenállás-R-ohm</p>
+  <p>feszültség-U-Volt</p>
+  <p>áramerősség-I-Amper</p>
+  <p>nyomott felületeknek-A-m2</p>
+  <p>erő-F-Newton</p>
+  <p>nyomás-p-Paascal</p>
+  <p>FORRÁSHŐ-Lf-Kj/kg</p>
+  <p>OLVADÁSHŐ-Lo-Kj/kg</p>
+  <p>fajhő-c-KJ/kg·ºC</p>
+  <p>munka-W-Joule</p>
+  <p>fogyasztás-∆E-J, kJ</p>
+  <p>TELJESÍTMÉNY-P-Watt</p>
+  <p>HASTÁSFOK-n-%</p>
+  <p>Energiának-E-Joule</p>
+</div>
+
+<script>
+  function toggleTeljesKepreNyom() {
+    var elem = document.documentElement;
+    var meth = elem.requestFullscreen || elem.webkitRequestFullscreen || elem.mozRequestFullScreen || elem.msRequestFullscreen;
+
+    if (meth) {
+      meth.call(elem);
+      toggleSzoveg();
+    } else {
+      console.log('A teljes képernyő támogatása nincs elérhető.');
+    }
+  }
+
+  function toggleSzoveg() {
+    var szoveg = document.getElementById("szoveg");
+    if (szoveg.style.display === "none") {
+      szoveg.style.display = "block";
+    } else {
+      szoveg.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>
